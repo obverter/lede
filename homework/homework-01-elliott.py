@@ -4,16 +4,15 @@
 
 # When run from the command line, this file should prompt the user for their year of birth, and print out (approximately):
 
-import numpy as np
+import numpy as np # Sorry about the numpy import. I'm using it exactly once for a funner heart rate calculation.
 
-# How old the user is
 print(
     "\n ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡ \n ♡♡♡♡♡♡♡♡♡♡♡♡ Welcome to the Life Comparifier ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡ \n ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡ \n"
 )
-# age_input = int(input("How old are you? \n > "))
-# age = age_input
 
+# How old the user is
 # If someone says they were born in the future, try asking them again (assume they'll do it right the second time).
+
 while True:
     age = int(input("How old are you? \n > "))
     try:
@@ -38,7 +37,7 @@ birthyear = 2022 - age
 
 # How many times the user's heart has beaten
 print(
-    "\nAccording to the NIH, the average adult's resting heart rate \nis about 66 beats per minute (MEAN: 65.9, STD DEV: 9.7).\n \n "
+    "\nAccording an enormous NIH study, the average adult's resting heart rate \nis about 66 beats per minute (MEAN: 65.9, STD DEV: 9.7).\n "
 )
 print(
     "So let's generate a random value from a normal distribution of \nthe NIH's resting heart rate study and say that it's \nyour resting heart rate... \n"
@@ -46,15 +45,15 @@ print(
 print("It is done. \n")
 
 print(
-    "Guido van Rossum, who is Python's creator and, \nprior to his resignation, was Python's \nBenevolent Dictator for Life, has, by proxy, \ndetermined that your resting heart rate is...\n"
+    "Guido van Rossum, who is Python's creator and, \nprior to his resignation, was Python's \nBenevolent Dictator for Life, has wiggled his fingers and \ndetermined that your resting heart rate is...\n"
 )
 
 print("❤️ ❤️ ❤️ ", round(pulse), "beats per minute. ❤️ ❤️ ❤️\n ")
 print(
     "If you don't like your resting heart rate, don't blame Guido.\n\nMaybe do some cardio.\n"
 )
-39
-print("But now that we know your heart rate, here are some mostly-fun facts:\n")
+
+print("But now that Guido has given you a heart rate, here are some mostly-fun facts:\n")
 print(
     "Your heart has beaten about",
     round(total_beats / 1_000_000_000, 3),
@@ -63,7 +62,7 @@ print(
 
 # How many times a blue whale's heart has beaten
 print(
-    "If instead you were a blue whale that was",
+    "If Guido turned you into a blue whale that was",
     age,
     "years old, \n then your heart would have beaten about",
     round(whale / 1_000_000),
@@ -73,7 +72,7 @@ print(
 # How many times a rabbit's heart has beaten
 # If the answer to rabbit heartbeats is more than a million, say "XXX million" instead of the very long raw number
 print(
-    "But if you were a rabbit that was",
+    "But if Guido made you a rabbit that was",
     age,
     "years old, \n then your heart would have beaten about",
     round(rabbit / 1_000_000_000, 3),
@@ -84,7 +83,7 @@ print(
 print(
     "If you had been born on Venus, \n you would have been incinerated \n",
     VENUS,
-    "Venitian years ago. \n \n 🔥 🔥 🔥\n \n",
+    "Venitian years ago. \n 🔥 🔥 🔥\n 🔥 HOT 🔥\n 🔥 🔥 🔥\n",
 )
 
 # How old they are in Neptune years
@@ -118,7 +117,7 @@ else:
 # If they were born in an even or odd year
 
 if birthyear % 2 == 0:
-    print("You were born in", birthyear, "which is an even year.\n\n")
+    print("You were born in", birthyear, "which is an even year.\n")
 else:
     print(
         "You were born in",
