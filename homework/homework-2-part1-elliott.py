@@ -65,7 +65,6 @@ print(
 # 3) If the movie cost more to make than it made in theaters, print "That was a bad investment". If the film's revenue was more than five times the amount it cost to make, print "That was a great investment." Otherwise print "That was an okay investment."
 
 delta = movie["budget"] - movie["revenue"]
-K = 1000
 M = 1_000_000
 
 if delta > 0:
