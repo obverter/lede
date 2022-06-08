@@ -5,14 +5,22 @@
 # When run from the command line, this file should prompt the user for their year of birth, and print out (approximately):
 
 import numpy as np
-from datetime import date
 
 # How old the user is
 print(
     "\n ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡ \n ♡♡♡♡♡♡♡♡♡♡♡♡ Welcome to the Life Comparifier ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡ \n ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡ \n"
 )
-age_input = int(input("How old are you? \n > "))
-age = age_input
+# age_input = int(input("How old are you? \n > "))
+# age = age_input
+
+# If someone says they were born in the future, try asking them again (assume they'll do it right the second time).
+while True:
+    age = int(input("How old are you? \n > "))
+    try:
+        age > 0
+        break
+    except ValueError:
+        print("You are not a time traveler. Please enter your actual age.")
 
 # constants
 DAYS = age * 365.25
@@ -25,6 +33,7 @@ pulse = np.random.normal(65.9, 9.7)
 total_beats = round(pulse * MINUTES)
 whale = round(total_beats / pulse * 11)  # Blue Whale RHR ~11
 rabbit = round(total_beats / pulse * 135)  # Rabbit RHR ~120-150
+birthyear = 2022 - age
 
 
 # How many times the user's heart has beaten
@@ -104,10 +113,48 @@ elif age < 37:
         "years younger \n than the person who wrote this code. 👶 👶 👶\n",
     )
 else:
-    print("Oh hey! The person who wrote this code is 37 too!")
+    print("Oh hey! The person who wrote this code is 37 too!\n")
 
-#  If they were born in an even or odd year
+# If they were born in an even or odd year
+
+if birthyear % 2 == 0:
+    print("You were born in", birthyear, "which is an even year.\n\n")
+else:
+    print(
+        "You were born in",
+        birthyear,
+        "which is an odd year.\nOdd-numbered. Most years are pretty odd.\n",
+    )
+
 # How many times there has been a president from the Democratic Party in office since they were born (1960 onward, and each president only counts once)
+
+democrats = [1960, 1963, 1976, 1992, 2008, 2020]
+
+print(
+    "There have been",
+    sum(i <= birthyear for i in democrats),
+    "Democratic presidents in office since you showed up.\n",
+)
+
+
 # Which US President was in office when they were born (1960 onward)
 
-# If someone says they were born in the future, try asking them again (assume they'll do it right the second time).
+presidents = {
+    range(1953, 1960): "Eisenhower",
+    range(1961, 1963): "Kennedy",
+    range(1964, 1968): "Johnson",
+    range(1969, 1974): "Nixon",
+    range(1975, 1976): "Ford",
+    range(1977, 1980): "Carter",
+    range(1981, 1988): "Reagan",
+    range(1989, 1992): "Bush",
+    range(1993, 2000): "Clinton",
+    range(2001, 2008): "Dubya",
+    range(2009, 2016): "Obama",
+    range(2017, 2020): "Trump",
+    range(2021, 2022): "Biden",
+}
+
+in_office = {presidents[key] for key in presidents if birthyear in key}
+
+print(f"{in_office} was probably the President when you were born")
