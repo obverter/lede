@@ -23,8 +23,8 @@ while True:
 
 # constants
 DAYS = age * 365.25
-HOURS = age * 365 * 24
-MINUTES = age * 365 * 24 * 60
+HOURS = age * 365.25 * 24
+MINUTES = age * 365.25 * 24 * 60
 VENUS = round(age * 1.615, 2)
 NEPTUNE = round(age / 165, 2)
 
@@ -39,9 +39,11 @@ birthyear = 2022 - age
 print(
     "\nAccording an enormous NIH study, the average adult's resting heart rate \nis about 66 beats per minute (MEAN: 65.9, STD DEV: 9.7).\n "
 )
+
 print(
     "So let's generate a random value from a normal distribution of \nthe NIH's resting heart rate study and say that it's \nyour resting heart rate... \n"
 )
+
 print("It is done. \n")
 
 print(
@@ -49,11 +51,13 @@ print(
 )
 
 print("❤️ ❤️ ❤️ ", round(pulse), "beats per minute. ❤️ ❤️ ❤️\n ")
+
 print(
     "If you don't like your resting heart rate, don't blame Guido.\n\nMaybe do some cardio.\n"
 )
 
 print("But now that Guido has given you a heart rate, here are some mostly-fun facts:\n")
+
 print(
     "Your heart has beaten about",
     round(total_beats / 1_000_000_000, 3),
