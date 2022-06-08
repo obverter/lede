@@ -1,17 +1,33 @@
-# HOMEWORK PART TWO
-# Please create a new file named homework-2-part2-lastname.py
-# The first line should be a comment with your full name
-# The second line should be the date
-# The third line should be a comment "Homework 2, Part 2"
+# Ben Elliott
+# 2022-06-07
+# Homework 2, Part 2
 
 # PART TWO: Lists
 
 # 1) Make a list called "countries" - it should contain seven different countries and NOT be in alphabetical order
+
+countries = ["Canada", "Paraguay", "Chad", "Mexico", "China", "Japan", "Spain"]
 # 2) Using a for loop, print each element of the list
+print("Here is a list of countries.\n")
+for i in countries:
+    print(i)
+
 # 3) Sort the list permanently.
+countries_abc = sorted(countries)
+
+countries_tup = tuple(
+    countries_abc
+)
+print(f"\nLet's alphabetize the list permanently:\n\n{countries_tup}\ntype:{type(countries_tup)}")
+
 # 4) Display the first element of the list.
+print(f"\nThe first entry in the alphabetized list of countries is {countries_tup[0]}.")
+
 # 5) Display the second-to-last element of the list.
+print(f"\nThe second-to-last entry in the alphabetized list of countries is {countries_tup[-2]}.")
+
 # 6) Delete one of the countries from the list using its name.
+
 # 7) Using a for loop, print each country's name in all caps.
 
 # PART TWO: Dictionaries
