@@ -46,14 +46,34 @@ data = json.loads(
 
 # ===============================
 
-print("1. How many songs are this mess?")
+hline = "♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩"
+print(hline)
+print("\n1. How many songs are this mess?\n")
 print(f"There are {len(data['tracks'])} songs in this mess.\n")
+print(hline)
+print("\n2. List the name of each song in this mess along with its popularity.\n")
+print(f"Here is a list of the songs in this mess along with their popularity scores:\n")
+dt = data['tracks']
+for i in dt:
+    print(f"{i['name']}: {i['popularity']}")
 
-# print("2. List the name of each song in this mess along with its popularity.")
+print(f'\n{hline}')
 
-# print("3. How long would it take, in minutes, to listen to all of these songs in a row?")
+print("\n3. How long would it take, in minutes, to listen to all of these songs in a row?")
 
-# print("4. For each song, list every artist that worked on it.")
+duration_sum = 0
+for i in dt:
+    duration = i['duration_ms']
+    duration_sum += int(duration)
+
+convert_ms = (duration_sum/1000)
+minutes = convert_ms // 60
+seconds = convert_ms % 60
+
+print(f"It would take about {int(minutes)} minutes, {round(seconds)} seconds to listen to all of these songs.\n")
+print(f'\n{hline}')
+
+print("\n4. For each song, list every artist that worked on it.")
 
 # print("5. For each song, list every musician that worked on it EXCEPT Drake")
 
