@@ -15,20 +15,31 @@ for i in countries:
 # 3) Sort the list permanently.
 countries_abc = sorted(countries)
 
-countries_tup = tuple(
-    countries_abc
-)
-print(f"\nLet's alphabetize the list permanently:\n\n{countries_tup}\ntype:{type(countries_tup)}")
+print(f"\nLet's alphabetize the list permanently:\n\n{countries_abc}\n")
 
 # 4) Display the first element of the list.
-print(f"\nThe first entry in the alphabetized list of countries is {countries_tup[0]}.")
+print(f"The first entry in the alphabetized list of countries is {countries_abc[0]}.\n")
 
 # 5) Display the second-to-last element of the list.
-print(f"\nThe second-to-last entry in the alphabetized list of countries is {countries_tup[-2]}.")
+print(
+    f"The second-to-last entry in the alphabetized list of countries is {countries_abc[-2]}.\n"
+)
 
 # 6) Delete one of the countries from the list using its name.
 
+print("And then, for all the obvious reasons, let's get rid of Canada:\n")
+
+countries_abc.remove('Canada')
+print(countries_abc)
+
 # 7) Using a for loop, print each country's name in all caps.
+
+print("\nFinally, let's celebrate the non-Canadian list members by shouting their names:\n")
+
+for i in range(len(countries_abc)):
+    countries_abc[i] = countries_abc[i].upper()
+
+print(countries_abc)
 
 # PART TWO: Dictionaries
 
