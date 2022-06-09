@@ -44,13 +44,19 @@ data = json.loads(
 # dict_keys(['album', 'artists', 'available_markets', 'disc_number', 'duration_ms', 'explicit', 'external_ids', 'external_urls', 'href', 'id', 'name', 'popularity', 'preview_url', 'track_number', 'type', 'uri'])
 
 
-# ===============================
+# ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
+# ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪ It's time to boogie ♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
+# ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
 
 hline = "♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩"
+
 print(hline)
+
 print("\n1. How many songs are this mess?\n")
 print(f"There are {len(data['tracks'])} songs in this mess.\n")
+
 print(hline)
+
 print("\n2. List the name of each song in this mess along with its popularity.\n")
 print(f"Here is a list of the songs in this mess along with their popularity scores:\n")
 dt = data['tracks']
@@ -71,6 +77,7 @@ minutes = convert_ms // 60
 seconds = convert_ms % 60
 
 print(f"It would take about {int(minutes)} minutes, {round(seconds)} seconds to listen to all of these songs.\n")
+
 print(f'\n{hline}')
 
 print("\n4. For each song, list every artist that worked on it.")
