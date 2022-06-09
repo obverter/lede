@@ -37,7 +37,6 @@ data = json.loads(
 
 # Oh hey it's another dictionary.
 # What's in this dictionary?
-
 # print(data["tracks"][0].keys())
 
 # A list of keys.
@@ -86,7 +85,7 @@ convert_ms = (duration_sum/1000)  # variables to convert milliseconds to macrose
 minutes = convert_ms // 60
 seconds = convert_ms % 60
 
-print(f"It would take about {int(minutes)} minutes, {round(seconds)} seconds to listen to all of these songs.\n")
+print(f"It would take about {int(minutes)} minutes, {round(seconds)} seconds to suffer through all of these songs.\n")
 
 # ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
 print(f'\n{hline}')
@@ -94,7 +93,15 @@ print(f'\n{hline}')
 
 ## ?4
 
+
 print("\n4. For each song, list every artist that worked on it.")
+for i in dt:  # i = dictionary of each of data['tracks']
+    print(i['name'])
+    for j in ['artists']:  # j = list of dictionaries of artists in i
+        print("hi")
+
+
+
 
 
 # ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
