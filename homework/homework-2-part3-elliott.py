@@ -98,7 +98,7 @@ print(f"\n{hline}")
 ## ?4
 
 
-print("\n4. For each song, list every artist that worked on it.")
+print("\n4. For each song, list every artist that worked on it.\n")
 
 # We need to generate a dictionary of track-dictionaries containing a key for artists.
 
@@ -129,7 +129,6 @@ for i in dt:  # master loop # track dict to feed to staging list
 
     for i in track_master:
         artist_count = len(contributors_master["artists"])
-        artist_pop = artist_count - 1
         if artist_count >= 2:
             for each in track_master:
                 collab = ", ".join(list(*(contributors_master.values())))
@@ -146,7 +145,41 @@ print(f"\n{hline}")
 
 ## ?5
 
-# print("5. For each song, list every musician that worked on it EXCEPT Drake")
+print("\n5. For each song, list every musician that worked on it EXCEPT Drake\n")
+
+for i in dt:
+    track_master = {}  # init track dict
+    track_name = []  # init track name list
+    track_name.append(i["name"])  # append track name to track name list
+
+    for track in track_name:
+        track_master["track"] = track
+
+    contributors_master = {}
+    contributors = []
+    for artist in i["artists"]:
+        contributors.append(artist["name"])
+    for i in contributors:
+        contributors_master["artists"] = contributors
+
+    for i in track_master:
+        contributors_master["artists"] = [
+            "" if item == "Drake" else item for item in contributors_master["artists"]
+        ]
+        artist_count = len(contributors_master["artists"])
+        cma = contributors_master["artists"]
+        if artist_count > 2:
+            for each in track_master:
+                print(
+                    f"The track '{track_master['track']}' features {cma[1]} and {cma[2]}."
+                )
+        elif artist_count > 1:
+            for each in track_master:
+                print(f"The track '{track_master['track']}' features {cma[1]}.")
+        else:
+            print(
+                f"The track '{track_master['track']}' features nobody. Not even Drake."
+            )
 
 # ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
 print(f"\n{hline}")
