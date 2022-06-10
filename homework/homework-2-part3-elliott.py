@@ -128,9 +128,16 @@ for i in dt:  # master loop # track dict to feed to staging list
         contributors_master["artists"] = contributors
 
     for i in track_master:
-        print(
-            f"The track {track_master['track']} features {contributors_master['artists']}"
-        )
+        artist_count = len(contributors_master["artists"])
+        artist_pop = artist_count - 1
+        if artist_count >= 2:
+            for each in track_master:
+                collab = ", ".join(list(*(contributors_master.values())))
+                print(f"The track '{track_master['track']}' features {collab}")
+        else:
+            print(
+                f"The track '{track_master['track']}' features {contributors_master['artists'].pop()}"
+            )
 
 
 # ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
