@@ -64,48 +64,77 @@ print(hline)
 
 print("\n2. List the name of each song in this mess along with its popularity.\n")
 print(f"Here is a list of the songs in this mess along with their popularity scores:\n")
-dt = data['tracks']
+dt = data["tracks"]
 for i in dt:
     print(f"{i['name']}: {i['popularity']}")
 
 # ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
-print(f'\n{hline}')
+print(f"\n{hline}")
 # ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
 
 ## ?3
 
-print("\n3. How long would it take, in minutes, to listen to all of these songs in a row?")
+print(
+    "\n3. How long would it take, in minutes, to listen to all of these songs in a row?"
+)
 
 duration_sum = 0  # init duration summifier variable
 for i in dt:  # summify song durations
-    duration = i['duration_ms']
+    duration = i["duration_ms"]
     duration_sum += int(duration)
 
-convert_ms = (duration_sum/1000)  # variables to convert milliseconds to macroseconds
+convert_ms = duration_sum / 1000  # variables to convert milliseconds to macroseconds
 minutes = convert_ms // 60
 seconds = convert_ms % 60
 
-print(f"It would take about {int(minutes)} minutes, {round(seconds)} seconds to suffer through all of these songs.\n")
+print(
+    f"It would take about {int(minutes)} minutes, {round(seconds)} seconds to suffer through all of these songs.\n"
+)
 
 # ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
-print(f'\n{hline}')
+print(f"\n{hline}")
 # ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
 
 ## ?4
 
 
 print("\n4. For each song, list every artist that worked on it.")
-for i in dt:  # i = dictionary of each of data['tracks']
-    print(i['name'])
-    for j in ['artists']:  # j = list of dictionaries of artists in i
-        print("hi")
+
+# We need to generate a dictionary of track-dictionaries containing a key for artists.
 
 
+# 1. Generate a loop through raw data targeting each track. ✅
+#    A. Init target dictionary, which will feed final dictionary. ✅
+#    B. Index loop through data ✅
+#       i. For each track, retrieve track title ✅
+#       ii. Store track title in a list. ✅
+#          a. For contributing artists: ✅
+#          b. Store contributing artists in a list. ✅
+#    C. Print results via f-string, probably. ✅
 
+for i in dt:  # master loop # track dict to feed to staging list
+    track_master = {}  # init track dict
+    track_name = []  # init track name list
+    track_name.append(i["name"])  # append track name to track name list
+
+    for track in track_name:
+        track_master["track"] = track
+
+    contributors_master = {}
+    contributors = []
+    for artist in i["artists"]:
+        contributors.append(artist["name"])
+    for i in contributors:
+        contributors_master["artists"] = contributors
+
+    for i in track_master:
+        print(
+            f"The track {track_master['track']} features {contributors_master['artists']}"
+        )
 
 
 # ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
-print(f'\n{hline}')
+print(f"\n{hline}")
 # ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
 
 ## ?5
@@ -113,7 +142,7 @@ print(f'\n{hline}')
 # print("5. For each song, list every musician that worked on it EXCEPT Drake")
 
 # ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
-print(f'\n{hline}')
+print(f"\n{hline}")
 # ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
 
 ## ?6
@@ -121,7 +150,7 @@ print(f'\n{hline}')
 # print("6. How many songs are from albums, and how many are from singles?")
 
 # ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
-print(f'\n{hline}')
+print(f"\n{hline}")
 # ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
 
 ## ?7
@@ -129,7 +158,7 @@ print(f'\n{hline}')
 # print("7. What percentage of these songs are marked as explicit?")
 
 # ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
-print(f'\n{hline}')
+print(f"\n{hline}")
 # ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
 
 ## ?8
@@ -138,7 +167,7 @@ print(f'\n{hline}')
 
 
 # ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
-print(f'\n{hline}')
+print(f"\n{hline}")
 # ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
 
 ## ?9
