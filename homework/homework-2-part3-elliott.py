@@ -212,4 +212,21 @@ print(f"\n{hline}")
 
 ## ?9
 
-# print("9. What is the most popular song?")
+print("\n9. What is the most popular song?\n")
+
+print("The lazy person in me would note that this is a Top Ten list, which is already sorted by popularity. So we could just return the first item in (2)'s answer. But that doesn't seem interesting. So we'll do it the actual way.")
+popularity = []
+name = []
+sorter = {}
+for song in dt:
+    popularity.append(song["popularity"])
+    name.append(song["name"])
+sorter = zip(name, popularity)
+sorter = dict(sorter)
+score = sorter.values()
+highest_score = max(score)
+most_popular = [k for k, v in sorter.items() if v == 90]
+
+print(
+    f"\nThe most popular song is '{most_popular[0]}', which had a popularity score of {highest_score} on a completely arbitrary scale."
+)
