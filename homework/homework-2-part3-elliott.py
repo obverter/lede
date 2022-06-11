@@ -75,7 +75,7 @@ print(f"\n{hline}")
 ## ?3
 
 print(
-    "\n3. How long would it take, in minutes, to listen to all of these songs in a row?"
+    "\n3. How long would it take, in minutes, to listen to all of these songs in a row?\n"
 )
 
 duration_sum = 0  # init duration summifier variable
@@ -132,10 +132,10 @@ for i in dt:  # master loop # track dict to feed to staging list
         if artist_count >= 2:
             for each in track_master:
                 collab = ", ".join(list(*(contributors_master.values())))
-                print(f"The track '{track_master['track']}' features {collab}")
+                print(f"The track '{track_master['track']}' features {collab}.")
         else:
             print(
-                f"The track '{track_master['track']}' features {contributors_master['artists'].pop()}"
+                f"The track '{track_master['track']}' features {contributors_master['artists'].pop()}."
             )
 
 
@@ -171,11 +171,11 @@ for i in dt:
         if artist_count > 2:
             for each in track_master:
                 print(
-                    f"The track '{track_master['track']}' features {cma[1]} and {cma[2]}."
+                    f"{cma[1]} and {cma[2]} worked on the track '{track_master['track']}' while Drake was locked out of the building."
                 )
         elif artist_count > 1:
             for each in track_master:
-                print(f"The track '{track_master['track']}' features {cma[1]}.")
+                print(f"{cma[1]} worked on the track '{track_master['track']}' while Drake lost at the mall.")
         else:
             print(
                 f"The track '{track_master['track']}' features nobody. Not even Drake."
