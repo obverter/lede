@@ -248,7 +248,7 @@ while jam < 10:
         jam += 1
 
 for url in range(len(dt)):
-    print(f"You can listen to {dt[url]['name']} at the following url:\n{links[url]}\n")
+    print(f"You can listen to '{dt[url]['name']}' at the following url:\n{links[url]}\n")
 
 
 # ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
