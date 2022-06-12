@@ -175,7 +175,9 @@ for i in dt:
                 )
         elif artist_count > 1:
             for each in track_master:
-                print(f"{cma[1]} worked on the track '{track_master['track']}' while Drake lost at the mall.")
+                print(
+                    f"{cma[1]} worked on the track '{track_master['track']}' while Drake lost at the mall."
+                )
         else:
             print(
                 f"The track '{track_master['track']}' features nobody. Not even Drake."
@@ -187,7 +189,22 @@ print(f"\n{hline}")
 
 ## ?6
 
-# print("6. How many songs are from albums, and how many are from singles?")
+print("\n6. How many songs are from albums, and how many are from singles?\n")
+
+song = 0
+albums = []
+singles = []
+while song < 10:
+    if data["tracks"][song]["album"]["album_type"] == "single":
+        singles.append(song)
+        song += 1
+    else:
+        albums.append(song)
+        song += 1
+
+print(
+    f"Of the tracks from this mess, {len(albums)} are from albums and {len(singles)} are singles."
+)
 
 # ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
 print(f"\n{hline}")
@@ -195,7 +212,22 @@ print(f"\n{hline}")
 
 ## ?7
 
-# print("7. What percentage of these songs are marked as explicit?")
+print("7. What percentage of these songs are marked as explicit?")
+
+song = 0
+explicit = []
+disney = []
+while song < 10:
+    if data["tracks"][song]["explicit"] == True:
+        explicit.append(song)
+        song += 1
+    else:
+        disney.append(song)
+        song += 1
+
+print(
+    f"Of the tracks from this mess, {len(explicit)} are labeled as 'explicit' and {len(disney)} are not labeled as 'explicit'. If my calculations are correct, then {int(len(explicit) / song * 100)}% of the tracks are labeled as 'explicit."
+)
 
 # ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
 print(f"\n{hline}")
@@ -203,7 +235,20 @@ print(f"\n{hline}")
 
 ## ?8
 
-# print("8. I'd like to listen to one of the songs! Is there maybe a URL where I can listen to it?")
+print(
+    "8. I'd like to listen to one of the songs! Is there maybe a URL where I can listen to it?\n"
+)
+
+print("Hell yeah you can.\n")
+jam = 0
+links = []
+while jam < 10:
+    for song in dt:
+        links.append(dt[jam]["href"])
+        jam += 1
+
+for url in range(len(dt)):
+    print(f"You can listen to {dt[url]['name']} at the following url:\n{links[url]}\n")
 
 
 # ♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩♪♬♩
@@ -214,7 +259,9 @@ print(f"\n{hline}")
 
 print("\n9. What is the most popular song?\n")
 
-print("The lazy person in me would note that this is a Top Ten list, which is already sorted by popularity. So we could just return the first item in (2)'s answer. But that doesn't seem interesting. So we'll do it the actual way.")
+print(
+    "The lazy person in me would note that this is a Top Ten list, which is already sorted by popularity. So we could just return the first item in (2)'s answer. But that doesn't seem interesting. So we'll do it the actual way."
+)
 popularity = []
 name = []
 sorter = {}
