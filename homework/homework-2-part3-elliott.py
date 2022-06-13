@@ -272,7 +272,7 @@ sorter = zip(name, popularity)
 sorter = dict(sorter)
 score = sorter.values()
 highest_score = max(score)
-most_popular = [k for k, v in sorter.items() if v == 90]
+most_popular = [k for k, v in sorter.items() if v == highest_score]
 
 print(
     f"\nThe most popular song is '{most_popular[0]}', which had a popularity score of {highest_score} on a completely arbitrary scale."
