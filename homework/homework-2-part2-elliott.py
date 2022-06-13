@@ -104,6 +104,7 @@ age = input("How old are you?\n >")
 
 print("Okay, let me crunch the numbers...")
 import time
+
 time.sleep(1)
 
 for i in range(3):
@@ -127,3 +128,75 @@ else:
 # 1) Make a list of dictionaries of five places across the world - (1) Moscow, (2) Tehran, (3) Falkland Islands, (4) Seoul, and (5) Santiago. Each dictionary should include each city's name and latitude/longitude (see note above).
 # 2) Loop through the list, printing each city's name and whether it is above or below the equator (How do you know? Think hard about the latitude.). When you get to the Falkland Islands, also display the message "The Falkland Islands are a biogeographical part of the mild Antarctic zone," which is a sentence I stole from Wikipedia.
 # 3) Loop through the list, printing whether each city is north of south of your tree from the previous section.
+print("\n\n🗺🌲🗺🌲🗺🌲🗺🌲🗺🌲🗺🌲🗺🌲🗺🌲🗺🌲🗺🌲🗺\n")
+places = {  # grab info from wikipedia
+    "moscow": "55.7558° N, 37.6173° E",
+    "tehran": "35.7219° N, 51.3347° E",
+    "falkland_islands": "51.7963° S, 59.5236° W",
+    "seoul": "37.5665° N, 126.9780° E",
+    "santiago": "33.4489° S, 70.6693° W",
+}
+
+coordinates = []  # init working lists
+lats = []
+longs = []
+
+for pair in places.values():  # iter places.values, split, throw to working lists.
+    pair = pair.split(",")
+    for coords in pair:
+        if "N" in coords or "S" in coords:  # parse lats, else longs
+            lat = coords
+            lat = lat.strip()  # kill any whitespace
+            if "S" in lat:
+                lat = lat[0:-3]  # kill NS token
+                lat = float(lat)
+                lat = lat * -1  # neg subset for S
+                lats.append(lat)
+            else:
+                lat = lat[0:-3]
+                lat = float(lat)
+                lats.append(lat)
+        else:  # repeat NS block for EW
+            long = coords
+            long = long.strip()
+            if "W" in long:
+                long = long[0:-3]
+                long = float(long)
+                long = long * -1
+                longs.append(long)
+            else:
+                long = long[0:-3]
+                long = float(long)
+                longs.append(long)
+
+cities = []
+city_counter = 0
+for city in places:  # init dictionary per homework problem
+    city = {"name": city, "lat": lats[city_counter], "long": longs[city_counter]}
+    city_counter += 1
+    cities.append(city)
+
+for destination in cities:
+    dname = destination["name"]
+    if "falkland" not in dname:  # sequester falkland
+        if destination["lat"] > 0:
+            print(f"{str(dname).capitalize()} is north of the equator.\n")
+        else:
+            print(f"{str(dname).capitalize()} is south of the equator.\n")
+    else:
+        if destination["lat"] > 0:
+            print(f"{str(dname).capitalize()} is north of the equator.")
+        else:
+            print(f"{str(dname).capitalize()} is south of the equator.")
+        print(
+            "The Falkland Islands are a biogeographical part of the mild Antarctic zone.\n"
+        )
+
+print("🗺🌲🗺🌲🗺🌲🗺🌲🗺🌲🗺🌲🗺🌲🗺🌲🗺🌲🗺🌲🗺\n")  # obligate emoji
+
+for destination in cities:
+    dname = destination["name"]
+    if destination["lat"] > float(tree["latitude"]):
+        print(f"{str(dname).capitalize()} is north of {tree['name']}.\n")
+    else:
+        print(f"{str(dname).capitalize()} is south of {tree['name']}.\n")
