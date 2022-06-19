@@ -8,5 +8,12 @@
         "**/Thumbs.db": true,
         "**/secrets.py": true
     },
-    "explorerExclude.backup": null
+    "explorerExclude.backup": null,
+    "cSpell.words": [
+        "artistmatches",
+        "conftest",
+        "lils",
+        "mbid",
+        "venv"
+    ]
 }
