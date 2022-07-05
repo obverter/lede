@@ -15,5 +15,6 @@
         "lils",
         "mbid",
         "venv"
-    ]
+    ],
+    "python.formatting.provider": "black"
 }
