@@ -50,7 +50,7 @@ jupyter-core==4.10.0
 jupyter-tabnine==1.2.3
 jupyterlab-pygments==0.2.2
 kiwisolver==1.4.2
-lxml==4.9.0
+lxml==4.9.1
 MarkupSafe==2.1.1
 matplotlib==3.5.2
 matplotlib-inline==0.1.3
