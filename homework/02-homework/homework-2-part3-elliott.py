@@ -113,20 +113,10 @@ print("\n4. For each song, list every artist that worked on it.\n")
 #    C. Print results via f-string, probably. ✅
 
 for i in dt:  # master loop # track dict to feed to staging list
-    track_master = {}  # init track dict
-    track_name = []  # init track name list
-    track_name.append(i["name"])  # append track name to track name list
-
-    for track in track_name:
-        track_master["track"] = track
-
-    contributors_master = {}
-    contributors = []
-    for artist in i["artists"]:
-        contributors.append(artist["name"])
-    for i in contributors:
-        contributors_master["artists"] = contributors
-
+    track_name = [i["name"]]
+    track_master = {"track": track for track in track_name}
+    contributors = [artist["name"] for artist in i["artists"]]
+    contributors_master = {"artists": contributors for i in contributors}
     for i in track_master:
         artist_count = len(contributors_master["artists"])
         if artist_count >= 2:
@@ -148,17 +138,12 @@ print(f"\n{hline}")
 print("\n5. For each song, list every musician that worked on it EXCEPT Drake\n")
 
 for i in dt:
-    track_master = {}  # init track dict
     track_name = []  # init track name list
     track_name.append(i["name"])  # append track name to track name list
 
-    for track in track_name:
-        track_master["track"] = track
-
+    track_master = {"track": track for track in track_name}
     contributors_master = {}
-    contributors = []
-    for artist in i["artists"]:
-        contributors.append(artist["name"])
+    contributors = [artist["name"] for artist in i["artists"]]
     for i in contributors:
         contributors_master["artists"] = contributors
 
@@ -197,11 +182,9 @@ singles = []
 while song < 10:
     if data["tracks"][song]["album"]["album_type"] == "single":
         singles.append(song)
-        song += 1
     else:
         albums.append(song)
-        song += 1
-
+    song += 1
 print(
     f"Of the tracks from this mess, {len(albums)} are from albums and {len(singles)} are singles."
 )
@@ -220,11 +203,9 @@ disney = []
 while song < 10:
     if data["tracks"][song]["explicit"] == True:
         explicit.append(song)
-        song += 1
     else:
         disney.append(song)
-        song += 1
-
+    song += 1
 print(
     f"Of the tracks from this mess, {len(explicit)} are labeled as 'explicit' and {len(disney)} are not labeled as 'explicit'. If my calculations are correct, then {int(len(explicit) / song * 100)}% of the tracks are labeled as 'explicit."
 )

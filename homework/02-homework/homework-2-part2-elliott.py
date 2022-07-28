@@ -55,7 +55,6 @@ print("\n🇨🇦 🇨🇦 🇨🇦 🇨🇦 🇨🇦 🇨🇦 🇨🇦 🇨🇦
 print(
     "Let's create a dictionary called 'tree' that responds to a set of tree-related keys:\n"
 )
-tree = {}
 key_list = ["name", "species", "age", "location_name", "latitude", "longitude"]
 tree_values = [
     "Hyperion",
@@ -65,9 +64,7 @@ tree_values = [
     "41.3",
     "-124",
 ]
-for i in key_list:
-    tree[i] = None
-
+tree = {i: None for i in key_list}
 print(tree)
 
 print(
@@ -81,7 +78,7 @@ for key in key_list:
         tree_values.remove(value)
         break
 
-print(str(tree))
+print(tree)
 
 
 # 2) Print the sentence "{name} is a {years} year old tree that is in {location_name}"
@@ -148,42 +145,32 @@ for pair in places.values():  # iter places.values, split, throw to working list
             lat = coords
             lat = lat.strip()  # kill any whitespace
             if "S" in lat:
-                lat = lat[0:-3]  # kill NS token
+                lat = lat[:-3]
                 lat = float(lat)
-                lat = lat * -1  # neg subset for S
-                lats.append(lat)
+                lat *= -1
             else:
-                lat = lat[0:-3]
+                lat = lat[:-3]
                 lat = float(lat)
-                lats.append(lat)
+            lats.append(lat)
         else:  # repeat NS block for EW
             long = coords
             long = long.strip()
             if "W" in long:
-                long = long[0:-3]
+                long = long[:-3]
                 long = float(long)
-                long = long * -1
-                longs.append(long)
+                long *= -1
             else:
-                long = long[0:-3]
+                long = long[:-3]
                 long = float(long)
-                longs.append(long)
-
+            longs.append(long)
 cities = []
-city_counter = 0
-for city in places:  # init dictionary per homework problem
+for city_counter, city in enumerate(places):  # init dictionary per homework problem
     city = {"name": city, "lat": lats[city_counter], "long": longs[city_counter]}
-    city_counter += 1
     cities.append(city)
 
 for destination in cities:
     dname = destination["name"]
-    if "falkland" not in dname:  # sequester falkland
-        if destination["lat"] > 0:
-            print(f"{str(dname).capitalize()} is north of the equator.\n")
-        else:
-            print(f"{str(dname).capitalize()} is south of the equator.\n")
-    else:
+    if "falkland" in dname:
         if destination["lat"] > 0:
             print(f"{str(dname).capitalize()} is north of the equator.")
         else:
@@ -192,6 +179,10 @@ for destination in cities:
             "The Falkland Islands are a biogeographical part of the mild Antarctic zone.\n"
         )
 
+    elif destination["lat"] > 0:
+        print(f"{str(dname).capitalize()} is north of the equator.\n")
+    else:
+        print(f"{str(dname).capitalize()} is south of the equator.\n")
 print("🗺🌲🗺🌲🗺🌲🗺🌲🗺🌲🗺🌲🗺🌲🗺🌲🗺🌲🗺🌲🗺\n")  # obligate emoji
 
 for destination in cities:

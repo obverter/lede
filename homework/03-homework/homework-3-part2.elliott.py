@@ -39,7 +39,7 @@ print(
 )
 key = "6e398a633db74946801165709221306"
 loc = "Stockton"
-query_url = "http://api.weatherapi.com/v1/current.json?key=" + key + "&q=" + loc
+query_url = f"http://api.weatherapi.com/v1/current.json?key={key}&q={loc}"
 stockton = requests.get(query_url)
 stockton = stockton.json()
 # print(stockton)
@@ -74,7 +74,7 @@ print(
     "\nWhat's the current temperature at Heathrow International Airport?\n"
 )  # Use the airport's IATA code to search."
 loc = "LHR"
-query_url = "http://api.weatherapi.com/v1/current.json?key=" + key + "&q=" + loc
+query_url = f"http://api.weatherapi.com/v1/current.json?key={key}&q={loc}"
 location = requests.get(query_url)
 location = location.json()
 # print(stockton)
@@ -103,16 +103,14 @@ print(
 print("\n- - - - - - - - - - - - - - - - - - -\n")
 
 # Print the date of each of the 3 days you're getting a forecast for.
-date = []
-for day in range(0, 3):
-    date.append(dayloc["forecast"]["forecastday"][day]["date"])
+date = [dayloc["forecast"]["forecastday"][day]["date"] for day in range(3)]
 print(
     f"Here are the dates that are included in the {days}-day forecast for {forecast_location}:\n{date}\n\n"
 )
 print("\n- - - - - - - - - - - - - - - - - - -\n")
 
 print("Print the maximum temperature of each of the days.\n")
-for day in range(0, 3):
+for day in range(3):
     print(
         f"On {date[day]}, the maximum temperature is forecasted to be {dayloc['forecast']['forecastday'][day]['day']['maxtemp_c']}°C"
     )
@@ -123,9 +121,11 @@ print("Print the day with the highest maximum temperature.\n")
 import statistics
 import math
 
-temps = []
-for day in range(0, 3):
-    temps.append(dayloc["forecast"]["forecastday"][day]["day"]["maxtemp_c"])
+temps = [
+    dayloc["forecast"]["forecastday"][day]["day"]["maxtemp_c"]
+    for day in range(3)
+]
+
 max_temp = max(temps)
 max_index = temps.index(max_temp)
 mean_temp = statistics.mean(temps)
