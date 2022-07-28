@@ -48,7 +48,7 @@ subpages_urls = list(pokewiki.values())  # so is a list of values...
 
 pokeball = str(55)
 # pokeball = input("What's the name or ID of the Pokémon you would like to dissect?")
-pokemon_url = "https://pokeapi.co/api/v2/pokemon/" + pokeball
+pokemon_url = f"https://pokeapi.co/api/v2/pokemon/{pokeball}"
 
 pokemon = requests.get(pokemon_url)
 pokemon = pokemon.json()
@@ -71,7 +71,7 @@ print(
 # print(subpages.index('generation'))  # here looks good. it's index 14. there's our target url.
 pokewiki_generation = str(subpages[14])
 
-pokegeneration_url = "https://pokeapi.co/api/v2/" + pokewiki_generation
+pokegeneration_url = f"https://pokeapi.co/api/v2/{pokewiki_generation}"
 pokegen = requests.get(pokegeneration_url)
 pokegen = pokegen.json()
 # print(type(pokegen))  # good, it's a dict
@@ -80,22 +80,14 @@ pokegen = pokegen.json()
 # print(pokegen['results'])  # results is a list of dicts. Each with its own url.
 # print(pokegen['results'][0]['url'])  # each gen has its own api url, wherein the information I need is buried. Joy of joys.
 
-generation_urls = []  # init generation url list, fill
+generation_urls = [generation["url"] for generation in pokegen["results"]]
 
-for generation in pokegen["results"]:
-    generation_urls.append(generation["url"])
-
-# print(len(generation_urls))  # looks good, len 8
-
-# print(generation_urls[0])
-
-
-gencount = 0  # init counter iter
 version_groups = []  # assemble list of endpoint urls
 for generation_endpoint in range(len(generation_urls)):
     target_url = (
-        "https://pokeapi.co/api/v2/generation/" + str(generation_endpoint + 1) + "/"
+        f"https://pokeapi.co/api/v2/generation/{str(generation_endpoint + 1)}/"
     )
+
     version_groups.append(target_url)
 
 version_count = []  # init list of final count of game versions
@@ -106,8 +98,6 @@ for version in version_groups:
     )  # iter generations, dig version count, throw to list(version_count)
     generation = generation.json()
     version_count.append(len(generation["version_groups"]))
-    gencount += 1
-
 # print(version_count)
 
 print(
@@ -119,31 +109,22 @@ print(
 
 types = requests.get("https://pokeapi.co/api/v2/type/")
 types = types.json()
-# print(types)
-# print(types['results'][0]['name'])
+flavors = [
+    types["results"][flavor_counter]["name"]
+    for flavor_counter, flavor in enumerate(types["results"])
+]
 
-flavor_counter = 0
-flavors = []
-for flavor in types["results"]:
-    flavors.append(types["results"][flavor_counter]["name"])
-    flavor_counter += 1
 # print(flavors)
 
 # flavors.index('electric')  # electric is index 12. pokemon counts from 1. electric is 'url/13'. Plus I have a handy list, now. I probably won't need it, but I have it. And that's not nothing.
 
 electric = requests.get("https://pokeapi.co/api/v2/type/13")
 electric = electric.json()
-# electric.keys()  # Digging
-# electric["pokemon"]
-# electric["pokemon"][0]
-# electric["pokemon"][0]["pokemon"]
-# electric["pokemon"][0]["pokemon"]["name"]
+electric_pokemon = [
+    electric["pokemon"][electric_counter]["pokemon"]["name"]
+    for electric_counter, electremon in enumerate(electric["pokemon"])
+]
 
-electric_counter = 0
-electric_pokemon = []
-for electremon in electric["pokemon"]:
-    electric_pokemon.append(electric["pokemon"][electric_counter]["pokemon"]["name"])
-    electric_counter += 1
 # print(electric_pokemon)
 
 print(
@@ -171,7 +152,7 @@ print(
 # Who has a higher speed stat, Eevee or Pikachu?
 
 pokeball = "pikachu"
-pokemon_url = "https://pokeapi.co/api/v2/pokemon/" + pokeball
+pokemon_url = f"https://pokeapi.co/api/v2/pokemon/{pokeball}"
 
 pokemon = requests.get(pokemon_url)
 pokemon = pokemon.json()
@@ -185,7 +166,7 @@ pikaspeed = pokemon["stats"][-1]["base_stat"]
 
 
 pokeball = "eevee"
-pokemon_url = "https://pokeapi.co/api/v2/pokemon/" + pokeball
+pokemon_url = f"https://pokeapi.co/api/v2/pokemon/{pokeball}"
 
 pokemon = requests.get(pokemon_url)
 pokemon = pokemon.json()
