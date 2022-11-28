@@ -46,7 +46,7 @@ jmespath==1.0.0
 joblib==1.2.0
 jsonschema==4.6.0
 jupyter-client==7.3.4
-jupyter-core==4.10.0
+jupyter-core==4.11.2
 jupyter-tabnine==1.2.3
 jupyterlab-pygments==0.2.2
 kiwisolver==1.4.2
